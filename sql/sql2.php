@@ -16,7 +16,7 @@ $sections = ['A','B','C','D'];
 
 for($i = 0; $i < 1000; $i++) {
   $name = $data[$i][0];
-  $gender = $data[$i][1];
+  $gender = $data[$i][1] == 'boy' ? 'M': 'F';
   $section = $sections[array_rand($sections)];
   $class = rand(1,10);
   $_students["{$class}{$section}"][] = 1;
