@@ -1,0 +1,21 @@
+.title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    height: 5vh;
+}
+
+.chat-body {
+    height: 70vh;
+    background: #e8e8e8;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    overflow: hidden;
+}
+
+.chat-message textarea {
+  resize: none;
+  width: -webkit-fill-available;
+  border: 2px solid #000;
+  outline: none;
+}

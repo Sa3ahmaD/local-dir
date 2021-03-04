@@ -1,0 +1,38 @@
+;(function($) {
+  let name;
+  $(document).ready(function() {
+    
+    // $(".chat-message").height($("body").height() - $(".chat-message").offset().top);
+    // $("#chat-text").height($("#chat-text").parent().height() - 8);
+    name = prompt("What is your name?");
+    $("#chat-text").focus();
+  });
+
+  $("#chat-text").on("keypress", function (e) {
+    
+    if(e.keyCode === 13) {
+      // console.log($(this).val());
+      let msg = $(this).val();
+      $(this).val("");
+      // $("<p/>").html(msg).appendTo($(".chat-body"));
+      
+
+      $.post("data.php", {
+        message: msg,
+        sender: name
+      },function (data) {
+        $(".chat-body").html(data);
+        $(".chat-body").scrollTop($(".chat-body").prop("scrollHeight"));
+      });
+      e.preventDefault();
+    }
+    
+  });
+  
+  setInterval(function(){
+    $.post("data.php", {refresh:1},function (data) {
+      $(".chat-body").html(data);
+      $(".chat-body").scrollTop($(".chat-body").prop("scrollHeight"));
+    });
+  },3000);
+})(jQuery);
